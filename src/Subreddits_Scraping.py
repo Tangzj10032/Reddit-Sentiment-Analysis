@@ -45,11 +45,10 @@ def with_retry(func, *args, max_retries=5, initial_delay=60):
             raise
     raise Exception("Max retries reached, unable to proceed.")
 
-for submission in subreddit.new(limit=None):
-
-    comments = with_retry(lambda: submission.comments.replace_more(limit=None))
+for submission in subreddit.hot(limit=None):
+    submission.comments.replace_more(limit=None)
     comments_data = [{"author": str(comment.author), "comment": comment.body} 
-                     for comment in comments]
+                     for comment in submission.comments.list()]
 
     post_data = {
         "title": submission.title,
