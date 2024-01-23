@@ -1,1 +1,1 @@
-# Reddit-Sentiment-Mining
+# Reddit-Sentiment-Analysis
