@@ -3,7 +3,6 @@ import datetime as dt
 import json
 import time
 import prawcore
-import os
 
 # Reddit credentials
 reddit = praw.Reddit(client_id='kIl2JAx3TtA6cta50C_i4Q', 
@@ -12,9 +11,8 @@ reddit = praw.Reddit(client_id='kIl2JAx3TtA6cta50C_i4Q',
 
 subreddit = reddit.subreddit('Genshin_Impact')
 
-def save_to_file(data, filename='genshin_impact_data.json'):
-    data_directory = '../data'
-    file_path = os.path.join(data_directory, filename)
+def save_to_file(data):
+    file_path = '../data/genshin_impact_data.json'
     with open(file_path, 'a', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
         f.write('\n')
@@ -23,6 +21,7 @@ def process_comment(comment):
     comment_data = {
         "author": str(comment.author),
         "comment": comment.body,
+        "timestamp": comment.created_utc,
         "replies": [process_comment(reply) for reply in comment.replies]
     }
     return comment_data
