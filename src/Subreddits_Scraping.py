@@ -21,7 +21,7 @@ def process_comment(comment):
     comment_data = {
         "author": str(comment.author),
         "comment": comment.body,
-        "timestamp": comment.created_utc,
+        "date":  dt.datetime.fromtimestamp(comment.created_utc).isoformat(),
         "replies": [process_comment(reply) for reply in comment.replies]
     }
     return comment_data
