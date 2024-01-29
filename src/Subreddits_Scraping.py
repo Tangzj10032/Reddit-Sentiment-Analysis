@@ -32,6 +32,7 @@ for submission in subreddit.hot(limit=None):
 
     post_data = {
         "title": submission.title,
+        "content": submission.selftext,
         "date": dt.datetime.fromtimestamp(submission.created_utc).isoformat(),
         "author": str(submission.author),
         "comments": comments_data
