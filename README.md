@@ -3,9 +3,11 @@ Introduction
 This project aims to perform sentiment analysis on Reddit communities, focusing initially on r/Genshin_Impact. The goal is to enable companies and other entities to effectively understand and respond to user feedback on these forums.
 
 # Implementation
-A two-step process combining Large Language Models (LLM) with the VADER sentiment analysis tool is employed in this project: 
+This project uses 2 strategies for comparison:
+1, A fine-tuned transformer model
+2, A two-step process combining Latent Dirichlet Allocation (LDA) with the VADER sentiment analysis tool is employed in this project: 
 
-Use LLM to segment and categorize Reddit comments, identifying key topics and themes. 
+Use LDA to categorize Reddit comments, identifying key topics and themes. 
 
 Use VADER to assess the emotional tone of comments, rating then from extremely positve(+1) to extremely negative(-1).
 
